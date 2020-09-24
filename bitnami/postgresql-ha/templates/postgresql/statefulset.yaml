@@ -10,6 +10,7 @@ metadata:
 spec:
   serviceName: {{ include "postgresql-ha.postgresql" . }}-headless
   replicas: {{ .Values.postgresql.replicaCount }}
+  podManagementPolicy: Parallel
   updateStrategy:
     type: {{ .Values.postgresql.updateStrategyType }}
     {{- if (eq "Recreate" .Values.postgresql.updateStrategyType) }}
